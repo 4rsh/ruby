@@ -1,24 +1,27 @@
-require 'Time'
+=begin
+	
+TLDentifier developed by Arsh Leak. 2014.
+
+Commands:
+	--display	: 	Show all TLDs registered.
+	--help		: 	Show more informations.
+
+Linux version.
+
+=end
 
 class String
-	def black;          "\033[30m#{self}\033[0m" end
-	def red;            "\033[31m#{self}\033[0m" end
 	def green;          "\033[32m#{self}\033[0m" end
-	def brown;          "\033[33m#{self}\033[0m" end
 	def blue;           "\033[34m#{self}\033[0m" end
-	def magenta;        "\033[35m#{self}\033[0m" end
 	def cyan;           "\033[36m#{self}\033[0m" end
-	def gray;           "\033[37m#{self}\033[0m" end
+	def bold;           "\033[1m#{self}\033[22m" end
 end
 
 
-system("cls")
-
-def head()
-	puts "TLD Check"
-end
+system("clear")
 
 domains	=	{
+	"--help"	=>	"Hey.",
 	".br"		=>	"Brazilian",
 	".com"		=>	"Comercial",
 	".aero"		=>	"Aircraft",
@@ -50,7 +53,7 @@ domains	=	{
 	".at"		=>	"Austria",
 	".au"		=>	"Australia",
 	".aw"		=>	"Aruba",
-	".ax"		=>	"Åland",
+	".ax"		=>	"Aland",
 	".az"		=>	"Azerbaijan",
 	".ba"		=>	"Bosnia and Herzegovina",
 	".bb"		=>	"Barbados",
@@ -76,17 +79,17 @@ domains	=	{
 	".cf"		=>	"Central African Republic",
 	".cg"		=>	"Republic of the Congo",
 	".ch"		=>	"Switzerland",
-	".ci"		=>	"Côte d'Ivoire",
+	".ci"		=>	"Cote d'Ivoire",
 	".ck"		=>	"Cook Islands",
 	".cl"		=>	"Chile",
 	".cm"		=>	"Cameroon",
 	".cn"		=>	"People's Republic of China",
-	".co"		=>	"Colombia",
+	".co/"		=>	"Colombia",
 	".cr"		=>	"Costa Rica",
 	".cs"		=>	"Czechoslovakia",
 	".cu"		=>	"Cuba",
 	".cv"		=>	"Cape Verde",
-	".cw"		=>	"Curaçao",
+	".cw"		=>	"Curacao",
 	".cx"		=>	"Christmas Island",
 	".cy"		=>	"Cyprus",
 	".cz"		=>	"Czech Republic",
@@ -218,7 +221,7 @@ domains	=	{
 	".pw"		=>	"Palau",
 	".py"		=>	"Paraguay",
 	".qa"		=>	"Qatar",
-	".re"		=>	"Réunion",
+	".re"		=>	"Reunion",
 	".ro"		=>	"Romania",
 	".rs"		=>	"Serbia",
 	".ru"		=>	"Russia",
@@ -239,7 +242,7 @@ domains	=	{
 	".so"		=>	"Somalia",
 	".sr"		=>	"Suriname",
 	".ss"		=>	"South Sudan",
-	".st"		=>	"São Tomé and Príncipe",
+	".st"		=>	"Sao Tome and Principe",
 	".su"		=>	"Soviet Union",
 	".sv"		=>	"El Salvador",
 	".sx"		=>	"Sint Maarten",
@@ -287,46 +290,24 @@ domains	=	{
 }
 
 def head()
-	puts "
-	 _____ __    ____          _   _ ___ _         
-	|_   _|  |  |    | ___ ___| |_|_|  _|_|___ ___ 
-	  | | |  |__|  |  | -_|   |  _| |  _| | -_|  _|
-	  |_| |_____|____/|___|_|_|_| |_|_| |_|___|_|  
-	".green
+	"
+ _____ __    ____          _   _ ___ _         
+|_   _|  |  |    | ___ ___| |_|_|  _|_|___ ___ 
+  | | |  |__|  |  | -_|   |  _| |  _| | -_|  _|
+  |_| |_____|____/|___|_|_|_| |_|_| |_|___|_|  
+".green.bold
 end
-
-def loading()
-	puts "
-  /$$$$$$                      /$$      
- /$$__  $$                    | $$      
-| $$  | $$  /$$$$$$   /$$$$$$$| $$$$$$$ 
-| $$$$$$$$ /$$__  $$ /$$_____/| $$__  $$
-| $$__  $$| $$  |__/|  $$$$$$ | $$  | $$
-| $$  | $$| $$       |____  $$| $$  | $$
-| $$  | $$| $$       /$$$$$$$/| $$  | $$
-|__/  |__/|__/      |_______/ |__/  |__/
-                                        
-                                        
-                                        
- /$$                           /$$      
-| $$                          | $$      
-| $$        /$$$$$$   /$$$$$$ | $$   /$$
-| $$       /$$__  $$ |____  $$| $$  /$$/
-| $$      | $$$$$$$$  /$$$$$$$| $$$$$$/ 
-| $$      | $$_____/ /$$__  $$| $$_  $$ 
-| $$$$$$$$|  $$$$$$$|  $$$$$$$| $$ |  $$
-|________/ |_______/ |_______/|__/  |__/
-	".blue
-end
+puts head()
 name	=	ARGV.first
+puts "[#{name}]".blue.bold
 domains.each do |domain, etn|
   if name.include? (domain)
-    puts "[#{name}]".cyan+" The "+domain.blue+" it is a "+etn+" Domain."
+    puts "["+domain.cyan+"]	is a "+etn+" Domain."
 	elsif name	== "--help"
-		loading()
-		system("cls")
+		system("clear")
+		puts head()
 		puts ""
-		puts "Development".cyan
+		puts "Development.".cyan
 		puts "Developed by "+"Arsh Leak. 2014."
 		puts ""
 		puts ""
@@ -336,15 +317,22 @@ domains.each do |domain, etn|
 		puts "Facebook.".cyan
 		puts "http://facebook.com/doxnetwork"
 		puts ""
+		puts "Blog.".cyan
+		puts "http://doxnetwork.com/"
+		puts ""
 		puts "Credits.".cyan
 		puts "Prof. Eric Weinstein."
 		puts ""
 		puts "How to.".cyan
-		puts "If you want to see all TLD's, use:"
-		puts "ltdentifier.rb --display".green
+		puts "If you want to identify all TLDs, type:"
+		puts "$ ruby ltdentifier.rb --display".green
+		puts ""
+		puts "If you want to identify a specific TLD, type:"
+		puts "$ ruby ltdentifier.rb www.website.com/dir or www.website.com.".green
+		puts ""
 	elsif name == "--display"
+		head()
 		puts "Domain:".green+domain+" -"+" Entity: ".green+etn
-	elsif name.to_s.empty?
-		print "Erro."
 	  end
 end
+
