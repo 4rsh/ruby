@@ -347,3 +347,4 @@ domains.each do |domain, etn|
 		puts "Domain:".green+domain+" -"+" Entity: ".green+etn
 	  end
 end
+puts ""
